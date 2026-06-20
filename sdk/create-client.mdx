@@ -1,0 +1,20 @@
+---
+title: "createClient"
+description: "Create an Execution Governance SDK client."
+---
+
+# createClient
+
+Create a client:
+
+    const client = createClient({
+      apiKey: process.env.EG_API_KEY,
+      baseUrl: "https://control.11aiblockchain.com"
+    });
+
+## Parameters
+
+| Field | Required | Description |
+|---|---|---|
+| apiKey | Yes | API key loaded from environment variables. |
+| baseUrl | No | Optional runtime API base URL. |

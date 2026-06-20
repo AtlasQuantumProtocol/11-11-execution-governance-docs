@@ -1,0 +1,35 @@
+---
+title: "Quick Start"
+description: "Install and begin using the 11/11 Execution Governance SDK."
+---
+
+# Quick Start
+
+Install the SDK:
+
+    npm install @1111-ai/execution-governance-sdk
+
+Set your API key:
+
+    export EG_API_KEY=your_api_key_here
+
+Create a client:
+
+    import { createClient } from "@1111-ai/execution-governance-sdk";
+
+    const client = createClient({
+      apiKey: process.env.EG_API_KEY
+    });
+
+Submit a governed execution request:
+
+    const result = await client.controlFlow({
+      subject: "agent:demo",
+      action: "execute",
+      resource: "workflow:example",
+      context: {
+        environment: "production"
+      }
+    });
+
+11/11 systems are designed around fail-closed behavior. If authorization cannot be proven, execution should not proceed.
