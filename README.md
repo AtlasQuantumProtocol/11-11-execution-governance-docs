@@ -1,11 +1,55 @@
-# 11/11 AI Developer Documentation
+# 11/11 Execution Governance Developer Documentation
 
-Official developer documentation for the 11/11 AI Execution Governance Platform.
+Official public developer documentation for the 11/11 AI Execution Governance stack.
 
-Verification Before Runtime.
-Enforcement During Runtime.
+## Core Doctrine
+
+Verification Before Runtime.  
+Enforcement During Runtime.  
 Proof After Runtime.
 
-Execution Governance
-Governed Execution
-EA-11
+## Public Developer Docs
+
+The public developer documentation page should link to this repository as the canonical docs source:
+
+https://github.com/AtlasQuantumProtocol/11-11-execution-governance-docs
+
+## Public Infrastructure
+
+- Main Site: https://www.11aiblockchain.com
+- Console: https://control.11aiblockchain.com/console
+- Runtime Demo: https://control.11aiblockchain.com/demo
+- Proof Viewer: https://control.11aiblockchain.com/proof
+- Health: https://control.11aiblockchain.com/health
+- Lineage Explorer: https://www.11aiblockchain.com/lineage
+
+## Documentation Scope
+
+This repository documents public integration surfaces for:
+
+- Execution Governance™
+- Governed Execution™
+- EA-11™ Execution Arithmetic™
+- SDK usage
+- API concepts
+- Proof records
+- Governance profiles
+- Conformance guidance
+
+## Security and IP Boundary
+
+This repository does not disclose:
+
+- proprietary EA-11 formulas
+- internal authorization math
+- private policy-engine internals
+- production secrets
+- private keys
+- patent-sensitive implementation details
+
+## Status
+
+Public documentation source repository.
+
+Execution Governance™ · Governed Execution™ · EA-11™ · Execution Arithmetic™  
+Patent Pending
