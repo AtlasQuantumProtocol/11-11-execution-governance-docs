@@ -2,6 +2,22 @@
 
 Official public developer documentation for the 11/11 AI Execution Governance stack.
 
+## Repository About
+
+Official developer documentation for Execution Governance™, Governed Execution™, EA-11™, SDKs, APIs, proof reporting, governance profiles, and conformance guidance.
+
+Suggested GitHub topics:
+
+- execution-governance
+- governed-execution
+- runtime-governance
+- ea11
+- developer-docs
+- ai-governance
+- runtime-assurance
+- auditability
+- conformance
+
 ## Core Doctrine
 
 Verification Before Runtime.  
