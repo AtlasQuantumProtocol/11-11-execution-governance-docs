@@ -1,0 +1,64 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "11/11 AI Docs",
+  "navigation": {
+    "groups": [
+      {
+        "group": "Start",
+        "pages": [
+          "introduction",
+          "quickstart"
+        ]
+      },
+      {
+        "group": "SDK",
+        "pages": [
+          "sdk/installation",
+          "sdk/create-client",
+          "sdk/control-flow",
+          "sdk/verify-artifact",
+          "sdk/proof-report"
+        ]
+      },
+      {
+        "group": "API",
+        "pages": [
+          "api/overview",
+          "api/authorization",
+          "api/proofs",
+          "api/health"
+        ]
+      },
+      {
+        "group": "Concepts",
+        "pages": [
+          "concepts/execution-governance",
+          "concepts/governed-execution",
+          "concepts/ea-11",
+          "concepts/fail-closed"
+        ]
+      },
+      {
+        "group": "Profiles",
+        "pages": [
+          "profiles/financial",
+          "profiles/healthcare",
+          "profiles/defense"
+        ]
+      },
+      {
+        "group": "Conformance",
+        "pages": [
+          "conformance/overview"
+        ]
+      },
+      {
+        "group": "Resources",
+        "pages": [
+          "resources/links"
+        ]
+      }
+    ]
+  }
+}

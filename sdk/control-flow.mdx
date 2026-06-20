@@ -1,0 +1,26 @@
+---
+title: "controlFlow"
+description: "Submit an execution request for governance evaluation."
+---
+
+# controlFlow
+
+controlFlow submits an execution request for governance evaluation.
+
+    const result = await client.controlFlow({
+      subject: "agent:demo",
+      action: "execute",
+      resource: "workflow:example",
+      context: {
+        environment: "production"
+      }
+    });
+
+## Decision States
+
+- APPROVED
+- DENIED
+- FAIL_CLOSED
+- PENDING_REVIEW
+
+Governed Execution means execution should proceed only when governance authorization exists first.

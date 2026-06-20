@@ -1,0 +1,15 @@
+---
+title: "verifyArtifact"
+description: "Verify artifact proof metadata."
+---
+
+# verifyArtifact
+
+verifyArtifact verifies artifact hash references, proof metadata, and evidence-linked execution records.
+
+    const verified = await client.verifyArtifact({
+      artifactHash: "sha3-512:example",
+      proofHash: "sha3-512:example"
+    });
+
+This method supports independent verification, proof review, and audit support.
