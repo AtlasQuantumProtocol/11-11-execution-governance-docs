@@ -7,33 +7,63 @@ description: "Install and begin using the 11/11 Execution Governance SDK."
 
 Install the SDK:
 
-<Note>
-  **Private beta.** The 11/11 Execution Governance SDK is not yet publicly
-  published. Request access at [quantum@11aiblockchain.com](mailto:quantum@11aiblockchain.com)
-  and we'll provide installation instructions and credentials.
-</Note>
+    npm install @11ai/execution-governance
 
-Set your API key:
+Create a gate. The policy file decides what is allowed:
 
-    export EG_API_KEY=your_api_key_here
+    import { createGate, DeniedError } from "@11ai/execution-governance";
 
-Create a client:
+    const gate = createGate({ policy: "./eg-policy.yaml" });
 
-    import { createClient } from "@1111-ai/execution-governance-sdk";
+Authorize a call. `govern` runs the function only on allow. On deny it throws
+`DeniedError` and the function never runs:
 
-    const client = createClient({
-      apiKey: process.env.EG_API_KEY
+    const url = "https://example.com/collect";
+    const body = "API_KEY=sk-123";
+
+    try {
+      await gate.govern(
+        { sessionId: "s1", tool: "http.post", args: { url, body } },
+        () => fetch(url, { method: "POST", body })
+      );
+    } catch (e) {
+      if (!(e instanceof DeniedError)) throw e;
+      console.log("denied:", e.decision.reason);
+      console.log("receipt:", e.decision.receipt.receiptId);
+    }
+
+With the starter policy this denies a secret-bearing outbound POST before
+`fetch` runs, and appends a signed receipt to `./eg-receipts.jsonl`.
+
+To decide without executing, use `authorize`:
+
+    const decision = await gate.authorize({
+      sessionId: "s1",
+      tool: "http.get",
+      args: { url: "https://example.com" }
     });
 
-Submit a governed execution request:
+    // decision.decision -> "allow"
+    // decision.reason   -> "safe GET allowed"
 
-    const result = await client.controlFlow({
-      subject: "agent:demo",
-      action: "execute",
-      resource: "workflow:example",
-      context: {
-        environment: "production"
-      }
-    });
+Verify the receipt chain at any time:
+
+    const report = await gate.verifyReceipts("./eg-receipts.jsonl");
+    // { ok: true, total: 3, allows: 2, denies: 1, breaks: [] }
+
+If you do not pass `signingKey`, the gate generates an ephemeral key and warns.
+Receipts signed with an ephemeral key are not verifiable across restarts. Supply
+a stable key for anything beyond local experimentation.
 
 11/11 systems are designed around fail-closed behavior. If authorization cannot be proven, execution should not proceed.
+
+## Control plane client: private beta
+
+<Note>
+  **Private beta.** The hosted control plane client
+  (`@1111-ai/execution-governance-sdk`, `createClient` / `controlFlow`) is a
+  separate package from the SDK above and is not yet publicly published.
+  Request access at
+  [quantum@11aiblockchain.com](mailto:quantum@11aiblockchain.com) and we'll
+  provide installation instructions and credentials.
+</Note>

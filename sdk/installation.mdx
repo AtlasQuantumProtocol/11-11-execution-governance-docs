@@ -7,14 +7,31 @@ description: "Install and configure the SDK."
 
 Install the SDK:
 
-<Note>
-  **Private beta.** The 11/11 Execution Governance SDK is not yet publicly
-  published. Request access at [quantum@11aiblockchain.com](mailto:quantum@11aiblockchain.com)
-  and we'll provide installation instructions and credentials.
-</Note>
+    npm install @11ai/execution-governance
 
-Use environment variables for API keys:
+To gate an existing MCP server, install the proxy as well:
 
-    EG_API_KEY=your_api_key_here
+    npm install @11ai/mcp-gate
+
+## Signing keys
+
+The gate signs every decision receipt. Provide a stable signing key through the
+environment rather than hardcoding it:
+
+    EG_SIGNING_KEY=your_signing_key_here
+
+If no signing key is provided the gate generates an ephemeral one and warns.
+Receipts signed with an ephemeral key cannot be verified across restarts.
 
 Do not hardcode secrets, API keys, certificates, or credentials in source code.
+
+## Control plane client: private beta
+
+<Note>
+  **Private beta.** The hosted control plane client
+  (`@1111-ai/execution-governance-sdk`, `createClient` / `controlFlow`) is a
+  separate package from the SDK above and is not yet publicly published.
+  Request access at
+  [quantum@11aiblockchain.com](mailto:quantum@11aiblockchain.com) and we'll
+  provide installation instructions and credentials.
+</Note>
